@@ -11,9 +11,14 @@ public class DemoSiteAdd {
 	@FindBy(name = "FormsButton2")
 	private WebElement submit;
 	
-	public void addUser(String userIn, String passIn) {
-		user.sendKeys(userIn);
-		pass.sendKeys(passIn);
-		submit.click();
+	public boolean addUser(String userIn, String passIn) {
+		try {
+			user.sendKeys(userIn);
+			pass.sendKeys(passIn);
+			submit.click();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }

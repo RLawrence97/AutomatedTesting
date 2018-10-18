@@ -14,13 +14,18 @@ public class DemoSiteCheck {
 	@FindBy(xpath = "/html/body/table/tbody/tr/td[1]/big/blockquote/blockquote/font/center/b")
 	private WebElement success;
 	
-	public void loginUser(String userIn, String passIn) {
-		user.sendKeys(userIn);
-		pass.sendKeys(passIn);
-		submit.click();
+	public boolean loginUser(String userIn, String passIn) {
+		try {
+			user.sendKeys(userIn);
+			pass.sendKeys(passIn);
+			submit.click();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
-	public WebElement getSuccess() {
-		return success;
+	public String getSuccess() {
+		return success.getText();
 	}
 }
